@@ -60,30 +60,109 @@
   font-size: 14px;
   transition: all .3s;
 } 
-.header-menu-btn span {
+.header-menu-btn span.menu-btn-text {
   cursor: pointer;
   font-weight: bold;
 }
+.header-menu-btn:hover .menu-dropdown-list {
+  display: block;
+}
 .menu-dropdown-list {
+  --li-height: 60;
   position: absolute;
+  z-index: 20;
+  display: none;
   top: 100%;
   left: 0;
-  width: 200px;
+  width: 280px;
   background-color: #fff;
   border-top: 2px solid var(--theme-color);
   
 }
 .menu-dropdown-list .list-item {
-  height: 60px;
+  height: calc(var(--li-height) * 1px);
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  transition: all .3s;
+  position: relative;
+  cursor: default;
+  /* color: #999; */
 }
-.header-menu-btn:hover span,
+.list-box {
+  position: absolute;
+  top: -2px;
+  left: 100%;
+  height: calc(var(--li-height) * 4px + 2px);
+  background-color: #fff;
+  overflow: auto;
+  border-top: 2px solid var(--theme-color);
+}
+.list-wrap {
+  display: none;
+  width: 830px;
+  min-height: 100%;
+  border-left: 1px solid #eee;
+}
+.list-w-border-left {
+  height: 100%;
+}
+.cp {
+  display: flex;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+.cp-item {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+.cp .cp-name {
+  font-weight: normal;
+  padding: 0.5em 0.7em;
+  font-size: 100%;
+  color: #666;
+
+}
+.cp .cp-item:hover .cp-name {
+  color: var(--theme-color);
+  background-color: var(--theme-color-bg);
+}
+.menu-dropdown-list .list-item.active .list-label {
+  background-color: var(--theme-color-bg);
+  color: var(--theme-color);
+}
+.menu-dropdown-list .list-item:hover .list-wrap {
+  display: block;
+}
+.menu-dropdown-list .list-item .list-label {
+  text-decoration: none;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-menu-btn .list-label .bi {
+  font-size: 16px;
+  color: #444;
+}
+.header-menu-btn .list-label .label-right .bi {
+  font-size: 14px;
+  color: #999;
+}
+.menu-dropdown-list .list-item .list-label .label-left{
+  display: flex;
+  align-items: center;
+}
+.menu-dropdown-list .list-item .list-label .label-left>span {
+  padding-top: 2px;
+  margin-left: 8px;
+}
+.header-menu-btn:hover .menu-btn-text,
 .header-menu-btn:hover .bi.bi-list {
   color: var(--theme-color);
 }
-.header-menu-btn span {
+.header-menu-btn .menu-btn-text {
   margin-left: 10px;
 }
 .header-menu-btn .bi {
@@ -127,6 +206,7 @@
   display: flex;
   justify-content: flex-end;
   height: 100%;
+  padding-right: 15px;
   align-items: center;
 }
 .func-item {
@@ -157,4 +237,8 @@
   position: absolute;
   top: 20%;
   right: -5px;
+}
+#swiper .swiper-slide img {
+  width: 100%;
+  height: 100%;
 }
